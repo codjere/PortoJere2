@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Jeremiah Paul</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0F141C;
+            --bg-card: #1C1F29;
+            --primary-color: #FFD54F;
+            --text-light: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Rubik', sans-serif;
+            padding-top: 70px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            animation: fadeInPage 0.8s ease forwards;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+        
+        @keyframes fadeInPage {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(8px);
+            background: rgba(15,20,28,0.85)!important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .navbar-nav .nav-link {
+            color: #e0e0e0 !important;
+            margin-right: 18px;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .navbar-brand, .nav-link.active, .text-warning {
+            color: var(--primary-color) !important;
+        }
+
+        /* Contact Section */
+        .contact-hero {
+            min-height: 100vh;
+            padding-top: 100px;
+            background: linear-gradient(120deg, var(--bg-dark) 60%, var(--bg-card) 100%);
+        }
+        .contact-title {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .contact-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+            padding: 2rem;
+            text-align: center;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .motivation-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: var(--bg-card);
+            font-size: 1.1rem;
+            font-style: italic;
+            box-shadow: 0px 4px 16px rgba(0,0,0,0.15);
+        }
+        .contact-info {
+            margin-top: 1.5rem;
+        }
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .social-links .btn {
+            border-radius: 30px;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 213, 79, 0.6);
+            color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .social-links .btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-card);
+            border-color: var(--primary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0px 6px 20px rgba(255, 213, 79, 0.4);
+        }
+        .social-links .btn i {
+            font-size: 1.3rem;
+        }
+        .social-links .btn:nth-child(1) { animation-delay: 0.2s; }
+        .social-links .btn:nth-child(2) { animation-delay: 0.4s; }
+        .social-links .btn:nth-child(3) { animation-delay: 0.6s; }
+        .social-links .btn:nth-child(4) { animation-delay: 0.8s; }
+        .social-links .btn:nth-child(5) { animation-delay: 1s; }
+        .social-links .btn:nth-child(6) { animation-delay: 1.2s; }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Footer */
+        .footer {
+            background-color: var(--bg-dark) !important;
+        }
+        .fade-out-page {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Jeremiah Paul</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-uppercase fw-semibold">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portofolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About & Experience</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-hero d-flex align-items-center text-light">
+        <div class="container">
+            <h1 class="contact-title display-4 mb-5 text-center">Contact Me</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="contact-card">
+                        <img src="Images/jeresekola.jpg" alt="My Photo" class="profile-img">
+                        <div class="contact-info">
+                            <p>Name: Jeremiah Paul Benyaminsz</p>
+                            <p>Location: Jakarta, Indonesia</p>
+                        </div>
+                        <div class="motivation-card mt-4">
+                            "Never give up, because every effort you make today is an investment for your future."
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links mt-4 text-center">
+                <h5 class="text-warning mb-4">Find me on</h5>
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="https://github.com/codjere" target="_blank" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-github-fill me-2 fs-5"></i> GitHub
+                    </a>
+                    <a href="https://instagram.com/_jereepb_" target="_blank" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-instagram-fill me-2 fs-5"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@jeree2506" target="_blank" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-tiktok-fill me-2 fs-5"></i> TikTok
+                    </a>
+                    <a href="https://www.linkedin.com/in/jeremiah-paul-benyaminsz-951278351/" target="_blank" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-linkedin-fill me-2 fs-5"></i> LinkedIn
+                    </a>
+                    <a href="https://wa.me/628114000095" target="_blank" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-whatsapp-fill me-2 fs-5"></i> WhatsApp
+                    </a>
+                    <a href="JeremiahPaul_CV.pdf" download="JeremiahPaul_CV.pdf" class="btn btn-outline-light d-flex align-items-center px-3 py-2">
+                        <i class="ri-file-download-fill me-2 fs-5"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-3 bg-dark text-center text-secondary">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Jeremiah Paul. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const internalLinks = document.querySelectorAll('a[href^="index.html"], a[href^="portofolio.html"], a[href^="about.html"], a[href^="contact.html"]');
+    
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const destination = this.href;
+            
+            document.body.classList.add('fade-out-page');
+            
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 500); // Durasi harus sama dengan transition CSS (0.5s = 500ms)
+        });
+    });
+});
+    </script>
+</body>
+</html>

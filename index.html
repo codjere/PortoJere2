@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website | Jeremiah</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0F141C;
+            --bg-card: #1C1F29;
+            --primary-color: #FFD54F;
+            --text-light: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --skill-bg: #22293b;
+        }
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Rubik', sans-serif;
+            color: var(--text-light);
+            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeInPage 0.8s ease forwards;
+        }
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+        .navbar {
+            backdrop-filter: blur(8px);
+            background: rgba(15,20,28,0.85)!important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #e0e0e0 !important;
+            margin-right: 18px;
+            transition: color 0.2s;
+            font-size: 1.1rem;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0;
+            background: linear-gradient(120deg, var(--bg-dark) 60%, var(--bg-card) 100%);
+            position: relative;
+            z-index: 1;
+        }
+        .social-sidebar {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .social-sidebar img { width: 2px; height: 50px; }
+        .social-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 213, 79, 0.6);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            margin: 8px 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .social-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-card);
+            border-color: var(--primary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+        }
+        .hero-content-wrapper {
+            padding-top: 50px;
+        }
+        #handIc {
+            width: 40px;
+            animation: wave 2.5s infinite;
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+        .card_wrapper {
+            background: linear-gradient(120deg, var(--bg-card) 80%, #23283a 100%);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card_wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .hero-image-wrapper {
+            max-width: 450px;
+            margin: auto;
+            position: relative;
+            padding: 30px; /* Increased padding */
+        }
+        .hero-img {
+            border-radius: 18px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            animation: slideInLeft 1s ease forwards;
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: translateY(10px); /* Adjust vertical position */
+        }
+        .hero-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(28, 31, 41, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 213, 79, 0.5);
+            border-radius: 12px;
+            z-index: 3;
+            animation: scaleIn 0.8s ease-out;
+            padding: 10px 15px;
+            white-space: nowrap;
+            transform: translateY(-50%) translateX(-20px);
+        }
+        .hero-info h2 {
+            font-size: 1.1rem;
+        }
+        .hero-info img { width: 24px; }
+        .hero-arrow {
+            width: 100px;
+            bottom: 5px;
+            right: 5px;
+            transform: rotate(45deg);
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+            position: absolute;
+            z-index: 3;
+        }
+        .clients-card {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(28, 31, 41, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 213, 79, 0.5);
+            border-radius: 12px;
+            z-index: 3;
+            animation: scaleIn 0.8s ease-out;
+            padding: 10px 15px;
+            transform: translateY(50%) translateX(20px);
+        }
+        .clients-images img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-card);
+            margin-right: -10px;
+            object-fit: cover;
+        }
+        .skills-section {
+            padding: 80px 0;
+            background-color: var(--bg-dark);
+            text-align: center;
+        }
+        .skill-card {
+            background-color: var(--skill-bg);
+            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            transition: transform 0.3s, background-color 0.3s;
+            height: 100%;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px);
+            background-color: #2b3348;
+        }
+        .skill-card i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .skill-card h5 {
+            font-weight: 700;
+            color: #fff;
+        }
+        /* Animasi */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse {
+            0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.8; }
+            50% { transform: rotate(45deg) scale(1.1); opacity: 1; }
+        }
+        .mouse-arrow-down { animation: bounce 2s infinite; }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .animated-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animated-element.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animated-delay-1 { transition-delay: 0.1s; }
+        .animated-delay-2 { transition-delay: 0.2s; }
+        .animated-delay-3 { transition-delay: 0.3s; }
+        .animated-delay-4 { transition-delay: 0.4s; }
+        .animated-delay-5 { transition-delay: 0.5s; }
+        .animated-delay-6 { transition-delay: 0.6s; }
+        /* Responsif */
+        @media (max-width: 991px) {
+            .social-sidebar { display: none !important; }
+            .hero-section { text-align: center; }
+            .card_wrapper { margin: 10px auto; }
+            .hero-info {
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+            .clients-card {
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%) translateY(50%);
+            }
+            .hero-arrow {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-content-wrapper { padding-top: 20px; }
+            h1.display-1 { font-size: 3rem; }
+            .skills-section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-warning" href="index.html">Jeremiah Paul</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto text-uppercase fw-semibold">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="portofolio.html">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About & Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero-section">
+            <div class="social-sidebar d-none d-md-flex flex-column align-items-center">
+                <img src="Images/media-line-top.svg" alt="" class="mb-3">
+                <a href="https://x.com/jenos25" target="_blank" class="social-btn"><i class="ri-twitter-x-line"></i></a>
+                <a href="https://www.tiktok.com/@jeree2506" target="_blank" class="social-btn"><i class="ri-tiktok-line"></i></a>
+                <a href="https://www.linkedin.com/in/jeremiah-paul-benyaminsz-951278351/" target="_blank" class="social-btn"><i class="ri-linkedin-line"></i></a>
+                <a href="JeremiahPaul_CV.pdf" download="JeremiahPaul_CV.pdf" class="social-btn"><i class="ri-file-user-line"></i></a>
+                <a href="https://www.instagram.com/_jereepb_" target="_blank" class="social-btn"><i class="ri-instagram-line"></i></a>
+                <a href="https://github.com/codjere" target="_blank" class="social-btn"><i class="ri-github-line"></i></a>
+                <img src="Images/media-line-bottom.svg" alt="" class="mt-3">
+            </div>
+            <div class="hero-content-wrapper container-lg">
+                <div class="row align-items-center flex-lg-row-reverse">
+                    <div class="col-lg-6 mb-5 mb-lg-0 text-center">
+                        <div class="hero-image-wrapper">
+                            <div class="hero-info d-flex align-items-center justify-content-center p-3">
+                                <img src="Images/Polygon-arrow.svg" alt="Polygon" class="me-2 d-none d-sm-block">
+                                <h2 class="m-0 text-light fw-bold">Computer Science Student</h2>
+                            </div>
+                            <img src="Images/keren-removebg-preview.png" class="hero-img img-fluid mx-auto d-block" alt="Jeremiah Paul">
+                            <img src="Images/arrow-main.png" class="hero-arrow position-absolute" alt="Arrow">
+                            <div class="clients-card p-3 text-start">
+                                <p class="mb-2">Future Web Developer</p>
+                                <div class="clients-images d-flex align-items-center">
+                                    <img src="Images/clients-img1.jpg" alt="Client 1">
+                                    <img src="Images/clients-img2.jpg" alt="Client 2">
+                                    <img src="Images/clients-img3.jpg" alt="Client 3">
+                                    <img src="Images/clients-img4.jpg" alt="Client 4">
+                                    <h3 class="m-0 ms-2 text-warning fw-bold">Grow Up</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <p class="h5 text-warning mb-2 fw-normal animated-element animated-delay-1">Hello, I am <img src="Images/hand.png" id="handIc" alt="Waving Hand" class="ms-1"></p>
+                        <h1 class="display-1 fw-bold text-white mb-4 animated-element animated-delay-2">Jeremiah <span class="text-warning">Paul</span></h1>
+                        <div class="card_wrapper p-4 mb-3 animated-element animated-delay-3">
+                            <h3 class="h4 text-warning mb-2"><span>+++</span> Project Completed</h3>
+                        </div>
+                        <div class="card_wrapper p-4 animated-element animated-delay-4">
+                            <p class="text-white-50 lead m-0">
+                                As a <span class="text-white fw-bold">Computer Science student</span>, I have successfully completed several projects that showcase my passion for technology and problem-solving. I am dedicated to continuous learning and always strive to deliver innovative solutions through my work.
+                            </p>
+                        </div>
+                        <div class="card_wrapper p-4 mt-3 d-flex align-items-center justify-content-center justify-content-lg-start animated-element animated-delay-5">
+                            <svg class="mouse-arrow-down" xmlns="http://www.w3.org/2000/svg" width="24" height="40" viewBox="0 0 24 40" fill="none">
+                                <g clip-path="url(#clip0_37_162)">
+                                    <path d="M12 5L12 35" stroke="#FFDB59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M16 31L12 35" stroke="#FFDB59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M8 31L12 35" stroke="#FFDB59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_37_162">
+                                        <polygon points="12,5 16,9 8,9" fill="white"></polygon>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <h5 class="m-0 ms-2 text-warning fw-bold">Click another menu to learn more about me</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2 class="text-center fw-bold text-warning mb-5 animated-element animated-delay-1">My Skills</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="skill-card animated-element animated-delay-2">
+                            <i class="ri-code-s-slash-line"></i>
+                            <h5 class="mb-0">Web Development</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="skill-card animated-element animated-delay-3">
+                            <i class="ri-git-branch-line"></i>
+                            <h5 class="mb-0">Git & GitHub</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="skill-card animated-element animated-delay-4">
+                            <i class="ri-android-line"></i>
+                            <h5 class="mb-0">Project Management</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="skill-card animated-element animated-delay-5">
+                            <i class="ri-database-2-line"></i>
+                            <h5 class="mb-0">Database Management</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-3 text-center text-muted">
+            <p class="mb-0">&copy; 2025 Jeremiah Paul. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+            const animatedElements = document.querySelectorAll('.animated-element');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

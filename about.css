@@ -1,0 +1,136 @@
+/* about.css — Cleaned: unified background + vertical timeline + skills */
+
+/* VARIABLES */
+:root {
+  --bg: #0F141C;
+  --panel: rgba(255,255,255,0.02);
+  --muted: #bcbfc6;
+  --accent: #FF7D61;
+  --accent-2: #FFD54F;
+  --line: rgba(255,255,255,0.03);
+  --glass-shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+
+/* GLOBAL */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: var(--bg);
+  color: #e9eef2;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 72px;
+}
+
+/* NAV */
+.navbar { background: transparent; }
+
+/* HERO */
+.about-hero {
+  min-height: 72vh;
+  padding: 80px 0;
+  background: transparent;
+}
+.about-img {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 50%;
+  border: 6px solid var(--accent);
+  transition: transform .35s ease, box-shadow .35s ease;
+  object-fit: cover;
+}
+.about-img:hover { transform: translateY(-6px) scale(1.02); }
+
+/* SOCIAL */
+.social-links .social-btn {
+  width:48px; height:48px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.08);
+  transition: .18s;
+}
+.social-links .social-btn:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
+.social-links .cv-btn { border-color:var(--accent-2); color:var(--accent-2); }
+.social-links .cv-btn:hover { background:var(--accent-2); color:#000; }
+
+/* PANEL utility */
+.panel {
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.02);
+  padding: 12px;
+}
+
+/* SKILLS */
+.skills-section { padding-top: 28px; }
+.skills-list { padding: 6px; }
+.skill-item { display:flex; align-items:center; gap:14px; }
+.skill-label { width:170px; min-width:140px; font-weight:600; color:#eaecee; display:flex; gap:10px; align-items:center; }
+.skill-value { width:54px; text-align:right; color:var(--muted); font-weight:700; }
+.progress { height:12px; background: rgba(255,255,255,0.05); border-radius:999px; }
+.progress-bar { border-radius:999px; box-shadow:none; }
+
+/* PROGRESS BAR animation hint (ke-aktifkan via JS) */
+.progress-bar[data-value] { width: 0; }
+
+/* ===== vertical timeline (simple & clean) ===== */
+
+
+/* ensure no duplicate .timeline-item rules remain (important) */
+
+.section-experience {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        .experience-card {
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #ffffff; /* White card background */
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+        }
+        
+        .card-header {
+            background-color: #0d6efd; /* Bootstrap primary blue */
+            color: #ffffff;
+            font-weight: bold;
+            border-bottom: none;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+
+        .job-details {
+            font-size: 0.9rem;
+            color: #6c757d; /* Muted gray color */
+        }
+
+        .job-description li {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Optional: Add a simple timeline effect with custom CSS */
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid #dee2e6;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background-color: #0d6efd;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }

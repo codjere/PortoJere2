@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About Me & Experience | Jeremiah Paul</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0F141C;
+            --bg-card: #1C1F29;
+            --primary-color: #FFD54F;
+            --text-light: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Rubik', sans-serif;
+            padding-top: 70px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: fadeInPage 0.8s ease forwards;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+        
+        body.fade-out-page {
+            opacity: 0;
+        }
+
+        @keyframes fadeInPage {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(8px);
+            background: rgba(15,20,28,0.85)!important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .navbar-nav .nav-link {
+            color: #e0e0e0 !important;
+            margin-right: 18px;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .navbar-brand, .nav-link.active, .text-warning {
+            color: var(--primary-color) !important;
+        }
+
+       /* Hero Section (Updated) */
+.about-hero {
+    min-height: 90vh; /* Mengurangi tinggi agar konten lebih naik */
+    display: flex; /* Makes the content vertically centered */
+    align-items: center;
+    padding-top: 100px;
+    background: linear-gradient(120deg, var(--bg-dark) 60%, var(--bg-card) 100%);
+}
+.about-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.social-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 213, 79, 0.6);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+}
+.social-btn i {
+    font-size: 1.5rem;
+}
+.social-btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-card);
+    border-color: var(--primary-color);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0px 6px 20px rgba(255, 213, 79, 0.4);
+}
+        .social-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 213, 79, 0.6);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+        .social-btn i {
+            font-size: 1.5rem;
+        }
+        .social-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-card);
+            border-color: var(--primary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0px 6px 20px rgba(255, 213, 79, 0.4);
+        }
+        
+        /* Animations for sections */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animated-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animated-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animated-left.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animated-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animated-right.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Skills Section */
+        .skills-section .panel {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+        }
+        .skills-section .progress {
+            background-color: #495057;
+        }
+        .skills-section .skill-label {
+            width: 150px;
+            white-space: nowrap;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+        }
+        .experience-card .card-title {
+            color: #f8f9fa !important;
+        }
+        .experience-card .job-details,
+        .experience-card .job-description li {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-warning" href="index.html">Jeremiah Paul</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-uppercase fw-semibold">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portofolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link active text-warning" href="about.html">About & Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero d-flex align-items-center text-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-5 text-center mb-4 mb-md-0 animated-left">
+            <div class="position-relative d-inline-block">
+              <img src="Images/JeremiahPaul_HoDPodcast.jpg" alt="Profile" class="about-img shadow-lg">
+              <span class="position-absolute bottom-0 end-0 translate-middle p-2 bg-warning rounded-circle border border-3 border-dark" style="width:40px;height:40px;">
+                <i class="ri-graduation-cap-line text-dark fs-4"></i>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-7 animated-right">
+            <h1 class="display-4 fw-bold mb-3">About Me</h1>
+            <p class="lead mb-2">Hi, I'm <span class="text-warning fw-semibold">Jeremiah Paul</span> — a Computer Science student passionate about <span class="text-warning">web development</span>, <span class="text-warning">computational biology</span>, and <span class="text-warning">project management</span>.</p>
+            <p class="mb-4">I blend creativity and logic to build impactful digital solutions: educational apps, management systems, and Python-based bioinformatics tools. I thrive in collaborative environments and love turning ideas into reality.</p>
+            <div class="mt-4">
+              <h2 class="fw-bold mb-3"><i class="ri-graduation-cap-line text-warning"></i> Education</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="d-flex align-items-center bg-dark bg-opacity-50 rounded-3 p-3 shadow-sm">
+                    <div class="me-3 d-flex align-items-center">
+                      <img src="Images/binus.png" alt="BINUS Logo" style="width:36px;height:36px;object-fit:contain;" class="me-2">
+                      <i class="ri-university-line text-warning fs-3"></i>
+                    </div>
+                    <div>
+                      <strong>Bina Nusantara University</strong><br>
+                      <span class="text-warning fw-bold" style="font-size:1.05rem;">2023 – Present</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded-3 p-3 shadow-sm">
+                    <div class="me-3">
+                      <i class="ri-school-line text-warning fs-3"></i>
+                    </div>
+                    <div>
+                      <strong>Frater Senior High School, Kendari</strong><br>
+                      <span class="text-warning fw-bold" style="font-size:1.05rem;">2020 – 2023</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded-3 p-3 shadow-sm">
+                    <div class="me-3">
+                      <i class="ri-book-2-line text-warning fs-3"></i>
+                    </div>
+                    <div>
+                      <strong>SMP Negeri 1 Kendari</strong><br>
+                      <span class="text-warning fw-bold" style="font-size:1.05rem;">2017 – 2020</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded-3 p-3 shadow-sm">
+                    <div class="me-3">
+                      <i class="ri-pencil-line text-warning fs-3"></i>
+                    </div>
+                    <div>
+                      <strong>Pelangi Elementary School</strong><br>
+                      <span class="text-warning fw-bold" style="font-size:1.05rem;">2011 – 2017</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="social-links d-flex gap-3 mt-4 justify-content-center justify-content-md-start animated-section">
+              <a href="https://www.instagram.com/_jereepb_" target="_blank" class="social-btn" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+              <a href="https://github.com/codjere" target="_blank" class="social-btn" aria-label="Github"><i class="ri-github-line"></i></a>
+              <a href="https://linkedin.com/in/jeremiah-paul-benyaminsz-951278351" target="_blank" class="social-btn" aria-label="LinkedIn"><i class="ri-linkedin-box-line"></i></a>
+              <a href="JeremiahPaul_CV.pdf" download class="social-btn cv-btn" aria-label="Download CV"><i class="ri-file-user-line"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section py-5 text-light animated-section">
+        <div class="container">
+            <h2 class="text-center mb-4"><i class="ri-lightbulb-flash-line text-warning"></i> Skills</h2>
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-6 animated-left">
+                    <div class="panel p-3">
+                        <h5 class="fw-bold mb-3">Technical Skills</h5>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-html5-line text-warning"></i> HTML</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="89" style="width:89%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">89%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-brush-line text-warning"></i> CSS</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="83" style="width:83%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">83%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-flashlight-line text-warning"></i> JavaScript</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="87" style="width:87%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">87%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-reactjs-line text-warning"></i> React JS</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="85" style="width:85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">85%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-java-line text-warning"></i> Java</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="85" style="width:85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">85%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-0">
+                            <div class="skill-label me-3"><i class="ri-code-s-slash-line text-warning"></i> C</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="92" style="width:92%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">92%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animated-right">
+                    <div class="panel p-3">
+                        <h5 class="fw-bold mb-3">Frameworks, Research & Tools</h5>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-code-line text-warning"></i> C++</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="93" style="width:93%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">93%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-bootstrap-line text-warning"></i> Bootstrap</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="86" style="width:86%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">86%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-code-box-line text-warning"></i> Laravel</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="81" style="width:81%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">81%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-3">
+                            <div class="skill-label me-3"><i class="ri-search-eye-line text-warning"></i> Research</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill">
+                                    <div class="progress-bar bg-warning" role="progressbar" data-value="94" style="width:94%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-value">94%</div>
+                        </div>
+                        <hr class="my-3" />
+                        <h6 class="fw-semibold mb-2">Professional Skills</h6>
+                        <div class="skill-item d-flex align-items-center mb-2">
+                            <div class="skill-label me-3">Teamwork</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill"><div class="progress-bar bg-warning" role="progressbar" data-value="100" style="width:100%"></div></div>
+                            </div>
+                            <div class="skill-value">100%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-2">
+                            <div class="skill-label me-3">Public Speaking</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill"><div class="progress-bar bg-warning" role="progressbar" data-value="90" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-value">90%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-2">
+                            <div class="skill-label me-3">Project Management</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill"><div class="progress-bar bg-warning" role="progressbar" data-value="90" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-value">90%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-2">
+                            <div class="skill-label me-3">Creative Presentation</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill"><div class="progress-bar bg-warning" role="progressbar" data-value="90" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-value">90%</div>
+                        </div>
+                        <div class="skill-item d-flex align-items-center mb-0">
+                            <div class="skill-label me-3">Video Editing</div>
+                            <div class="skill-bar flex-grow-1 me-3">
+                                <div class="progress rounded-pill"><div class="progress-bar bg-warning" role="progressbar" data-value="80" style="width:80%"></div></div>
+                            </div>
+                            <div class="skill-value">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 animated-section">
+        <div class="container">
+            <h2 class="text-center mb-5 display-5 fw-bold"><i class="ri-briefcase-line me-2 text-warning"></i> Work Experience</h2>
+            <div class="row g-4">
+                <div class="col-md-6 animated-section">
+                    <div class="card h-100 experience-card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light fw-bold mb-1">Head of Event Organizer</h5>
+                            <div class="job-details mb-3">Forlawtous, Indonesia &bull; Feb 2025 – Jun 2025</div>
+                            <ul class="job-description ps-3 mb-0">
+                                <li>Led a cross-functional team to organize high-profile seminars, ensuring seamless event execution from planning to delivery.</li>
+                                <li>Held full responsibility for budget management and vendor negotiations to optimize resource utilization.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animated-section">
+                    <div class="card h-100 experience-card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light fw-bold mb-1">Head of Podcast</h5>
+                            <div class="job-details mb-3">Candidate College, Indonesia &bull; Aug 2025 – Present</div>
+                            <ul class="job-description ps-3 mb-0">
+                                <li>Oversaw the entire podcast production process, including research, guest scheduling, interviews, and distribution.</li>
+                                <li>Developed and optimized content across various platforms to significantly increase reach and audience base.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animated-section">
+                    <div class="card h-100 experience-card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light fw-bold mb-1">Coordinator of Digital Ecosystem</h5>
+                            <div class="job-details mb-3">Narasi Jabodetabek &bull; Aug 2025 – Present</div>
+                            <ul class="job-description ps-3 mb-0">
+                                <li>Responsible for managing the digital ecosystem and coordinating online community programs.</li>
+                                <li>Managed social media accounts and executed targeted campaigns to build and maintain relationships with partners.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animated-section">
+                    <div class="card h-100 experience-card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light fw-bold mb-1">Lead, Bahari-Edu (React JS)</h5>
+                            <div class="job-details mb-3">Project Lead &bull; 2025</div>
+                            <ul class="job-description ps-3 mb-0">
+                                <li>Led the frontend development of the Bahari-Edu project, focusing on component architecture, state management, and responsive UI.</li>
+                                <li>Coordinated development and Quality Assurance (QA) sprints to ensure a modular and high-quality educational platform.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animated-section">
+                    <div class="card h-100 experience-card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light fw-bold mb-1">Lead Research — Face Recognition in Online Election</h5>
+                            <div class="job-details mb-3">Research Lead &bull; 2024 – 2025</div>
+                            <ul class="job-description ps-3 mb-0">
+                                <li>Led research on the use of face recognition in online elections, including data set collection, model evaluation, and privacy and fairness issues.</li>
+                                <li>Developed a prototype pipeline and evaluated system robustness for authentication.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-3 bg-dark text-center text-light">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Jeremiah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onload = function() {
+            document.body.classList.add('loaded');
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth page transition
+            const internalLinks = document.querySelectorAll('a[href^="index.html"], a[href^="portofolio.html"], a[href^="about.html"], a[href^="contact.html"]');
+            
+            internalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const destination = this.href;
+                    
+                    document.body.classList.add('fade-out-page');
+                    
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 500);
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // observer.unobserve(entry.target); // Optional: uncomment to run animation only once
+                    } else {
+                        // Optional: uncomment to reset animation when out of view
+                        // entry.target.classList.remove('in-view'); 
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animated-section, .animated-left, .animated-right');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
